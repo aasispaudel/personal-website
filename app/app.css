@@ -143,3 +143,36 @@ button {
 .overlay-scrollbar::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+.content-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(182, 194, 230, 0.34) transparent;
+}
+
+.content-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.content-scrollbar::-webkit-scrollbar-track,
+.content-scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.content-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(182, 194, 230, 0.34);
+}
+
+.content-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(182, 194, 230, 0.56);
+}
+
+@media (min-width: 64rem) {
+  .content-scrollbar {
+    width: calc(100vw - 28.375rem);
+  }
+
+  .content-scrollbar > * {
+    max-width: 63.875rem;
+  }
+}

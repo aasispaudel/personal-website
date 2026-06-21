@@ -28,7 +28,7 @@ export function AvatarPortrait({
     : "M193 246c8 4 26 4 34 0";
 
   return (
-    <div className="relative mx-auto flex aspect-square w-[13.5rem] items-center justify-center overflow-hidden rounded-full border border-[var(--line-soft)] bg-[var(--avatar-frame)] shadow-[inset_0_0_36px_rgba(92,116,180,0.08)] sm:w-[14.5rem]">
+    <div className="relative mx-auto flex aspect-square w-[10.25rem] items-center justify-center overflow-hidden rounded-full border border-[var(--line-soft)] bg-[var(--avatar-frame)] shadow-[inset_0_0_36px_rgba(92,116,180,0.08)] sm:w-[12.25rem]">
       <svg
         viewBox="0 0 420 420"
         role="img"

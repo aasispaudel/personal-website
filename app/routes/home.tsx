@@ -210,7 +210,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[var(--page-bg)] text-[var(--text-primary)]">
+    <main className="min-h-screen bg-[var(--page-bg)] text-[var(--text-primary)] lg:h-screen lg:overflow-hidden">
       <header className="relative z-20 w-full max-w-[1500px] px-4 pb-4 pt-5 sm:px-6">
         <div className="grid items-center gap-5 lg:grid-cols-[minmax(340px,390px)_minmax(0,1fr)] lg:gap-10">
           <nav className="flex flex-wrap items-center justify-between lg:col-start-2">
@@ -260,15 +260,15 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="relative z-10 grid w-full max-w-[1500px] gap-8 px-4 pb-14 sm:px-6 lg:grid-cols-[minmax(340px,390px)_minmax(0,1fr)] lg:gap-10">
+      <section className="relative z-10 grid w-full max-w-[1500px] gap-8 px-4 pb-14 sm:px-6 lg:h-[calc(100vh-5rem)] lg:grid-cols-[minmax(340px,390px)_minmax(0,1fr)] lg:gap-10 lg:pb-0">
         <aside className="rounded-3xl border border-[var(--line-soft)] bg-[var(--sidebar-bg)] px-6 py-9 sm:px-8 lg:sticky lg:top-0 lg:-mt-20 lg:-ml-6 lg:w-[calc(100%+1.5rem)] lg:min-h-screen lg:self-start lg:rounded-none lg:border-y-0 lg:px-8 lg:pb-10 lg:pt-5">
-          <Link
+          {/* <Link
             to="/"
             className="block text-center text-[1.55rem] font-bold leading-none tracking-[-0.05em] text-[var(--brand)] hover:text-[#a7b7ff] sm:text-[1.75rem]"
           >
             Asis Paudel
-          </Link>
-          <div className="mt-8 lg:mt-[4.5rem]">
+          </Link> */}
+          <div className="mt-1 lg:mt-[1.5rem]">
             <AvatarPortrait
               eyeX={motion.eyeX}
               eyeY={motion.eyeY}
@@ -279,7 +279,7 @@ export default function Home() {
           </div>
           <Bio />
         </aside>
-        <div className="space-y-5">
+        <div className="content-scrollbar space-y-5 lg:h-full lg:overflow-y-auto lg:overscroll-contain lg:pb-14 lg:pr-3">
           <ExperienceSection
             items={experienceItems}
             onSelectItem={setSelectedItem}

@@ -81,7 +81,7 @@ const Bio = () => {
             </svg>
           }
         >
-          8+ years building scalable systems across AI, IoT, and cloud platforms
+          6+ years building scalable systems across AI, IoT, and cloud platforms
         </ProfileItem>
         <ProfileItem
           icon={
