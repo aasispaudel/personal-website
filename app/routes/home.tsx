@@ -211,66 +211,72 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[var(--page-bg)] text-[var(--text-primary)]">
-      <header className="relative z-20 mx-auto w-full max-w-[1500px] px-4 pb-4 pt-5 sm:px-6 lg:px-10">
-        <div className="flex flex-wrap items-center justify-between gap-5">
-          <Link
-            to="/"
-            className="text-[1.55rem] font-bold leading-none tracking-[-0.05em] text-[var(--brand)] hover:text-[#a7b7ff] sm:text-[1.75rem]"
-          >
-            Asis Paudel
-          </Link>
-          <nav className="flex flex-wrap items-center justify-end gap-6">
-            <a className={navLinkClass} href="#experience">
-              Experience
-            </a>
-            <a className={navLinkClass} href="#projects">
-              Projects
-            </a>
-            <a className={navLinkClass} href="#personal-projects">
-              Personal
-            </a>
-            <a className={navLinkClass} href="#articles">
-              Articles
-            </a>
-            <a className={navLinkClass} href="#contact">
-              Contact
-            </a>
-            <a
-              className={menuPillClass}
-              href="/asis-paudel-resume.txt"
-              download
-              onMouseEnter={handleInteractiveHover({ x: 0.35, y: -0.1 })}
-              onMouseLeave={handleInteractiveLeave}
-            >
-              Download Resume
-            </a>
-            <button
-              type="button"
-              className={controlPillClass}
-              onClick={() => setSoundOn((value) => !value)}
-            >
-              {soundOn ? "Sound On" : "Sound Off"}
-            </button>
-            <button
-              type="button"
-              className={controlPillClass}
-              onClick={() => setTheme((value) => (value === "light" ? "dark" : "light"))}
-            >
-              {theme === "light" ? "Dark Mode" : "Light Mode"}
-            </button>
+      <header className="relative z-20 w-full max-w-[1500px] px-4 pb-4 pt-5 sm:px-6">
+        <div className="grid items-center gap-5 lg:grid-cols-[minmax(340px,390px)_minmax(0,1fr)] lg:gap-10">
+          <nav className="flex flex-wrap items-center justify-between lg:col-start-2">
+            <div className="flex justify-start gap-6">
+              <a className={navLinkClass} href="#experience">
+                Experience
+              </a>
+              <a className={navLinkClass} href="#projects">
+                Projects
+              </a>
+              <a className={navLinkClass} href="#personal-projects">
+                Personal
+              </a>
+              <a className={navLinkClass} href="#articles">
+                Articles
+              </a>
+              <a className={navLinkClass} href="#contact">
+                Contact
+              </a>
+            </div>
+            <div className="flex justify-start gap-6">
+              <a
+                className={menuPillClass}
+                href="/asis-paudel-resume.txt"
+                download
+                onMouseEnter={handleInteractiveHover({ x: 0.35, y: -0.1 })}
+                onMouseLeave={handleInteractiveLeave}
+              >
+                Download Resume
+              </a>
+              <button
+                type="button"
+                className={controlPillClass}
+                onClick={() => setSoundOn((value) => !value)}
+              >
+                {soundOn ? "Sound On" : "Sound Off"}
+              </button>
+              <button
+                type="button"
+                className={controlPillClass}
+                onClick={() => setTheme((value) => (value === "light" ? "dark" : "light"))}
+              >
+                {theme === "light" ? "Dark Mode" : "Light Mode"}
+              </button>
+            </div>
           </nav>
         </div>
       </header>
 
-      <section className="relative z-10 mx-auto grid w-full max-w-[1500px] gap-8 px-4 pb-14 sm:px-6 lg:grid-cols-[minmax(340px,390px)_minmax(0,1fr)] lg:gap-10">
-        <aside className="rounded-3xl border border-[var(--line-soft)] bg-[var(--sidebar-bg)] px-6 py-9 sm:px-8 lg:sticky lg:top-6 lg:min-h-[calc(100vh-3rem)] lg:self-start lg:rounded-none lg:border-y-0 lg:px-8 lg:py-10">
-          <AvatarPortrait
-            eyeX={motion.eyeX}
-            eyeY={motion.eyeY}
-            headX={motion.headX}
-            headY={motion.headY}
-            happy={isAvatarHappy}
-          />
+      <section className="relative z-10 grid w-full max-w-[1500px] gap-8 px-4 pb-14 sm:px-6 lg:grid-cols-[minmax(340px,390px)_minmax(0,1fr)] lg:gap-10">
+        <aside className="rounded-3xl border border-[var(--line-soft)] bg-[var(--sidebar-bg)] px-6 py-9 sm:px-8 lg:sticky lg:top-0 lg:-mt-20 lg:-ml-6 lg:w-[calc(100%+1.5rem)] lg:min-h-screen lg:self-start lg:rounded-none lg:border-y-0 lg:px-8 lg:pb-10 lg:pt-5">
+          <Link
+            to="/"
+            className="block text-center text-[1.55rem] font-bold leading-none tracking-[-0.05em] text-[var(--brand)] hover:text-[#a7b7ff] sm:text-[1.75rem]"
+          >
+            Asis Paudel
+          </Link>
+          <div className="mt-8 lg:mt-[4.5rem]">
+            <AvatarPortrait
+              eyeX={motion.eyeX}
+              eyeY={motion.eyeY}
+              headX={motion.headX}
+              headY={motion.headY}
+              happy={isAvatarHappy}
+            />
+          </div>
           <Bio />
         </aside>
         <div className="space-y-5">
