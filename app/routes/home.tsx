@@ -211,8 +211,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[var(--page-bg)] text-[var(--text-primary)] lg:h-screen lg:overflow-hidden">
-      <header className="relative z-20 w-full max-w-[1500px] px-4 pb-4 pt-5 sm:px-6">
-        <div className="grid items-center gap-5 lg:grid-cols-[minmax(350px,400px)_minmax(0,1fr)] lg:gap-10">
+      <header className="relative z-20 w-full max-w-[1532px] px-4 pb-4 pt-5 sm:px-6">
+        <div className="grid items-center gap-6 sm:gap-10 md:gap-14 lg:grid-cols-[minmax(350px,400px)_minmax(0,1fr)] lg:gap-18">
           <nav className="flex flex-wrap items-center justify-between lg:col-start-2">
             <div className="flex justify-start gap-6">
               <a className={navLinkClass} href="#experience">
@@ -260,7 +260,7 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="relative z-10 grid w-full max-w-[1500px] gap-8 px-4 pb-14 sm:px-6 lg:h-[calc(100vh-5rem)] lg:grid-cols-[minmax(350px,400px)_minmax(0,1fr)] lg:gap-10 lg:pb-0">
+      <section className="relative z-10 grid w-full max-w-[1532px] gap-6 px-4 pb-14 sm:gap-10 sm:px-6 md:gap-14 lg:h-[calc(100vh-5rem)] lg:grid-cols-[minmax(350px,400px)_minmax(0,1fr)] lg:gap-18 lg:pb-0">
         <aside className="rounded-3xl border border-[var(--line-soft)] bg-[var(--sidebar-bg)] px-6 py-9 sm:px-8 lg:sticky lg:top-0 lg:-mt-20 lg:-ml-6 lg:w-[calc(100%+1.5rem)] lg:min-h-screen lg:self-start lg:rounded-none lg:border-y-0 lg:px-8 lg:pb-10 lg:pt-5">
           {/* <Link
             to="/"

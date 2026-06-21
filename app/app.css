@@ -169,7 +169,7 @@ button {
 
 @media (min-width: 64rem) {
   .content-scrollbar {
-    width: calc(100vw - 28.375rem);
+    width: calc(100vw - 31rem);
   }
 
   .content-scrollbar > * {
