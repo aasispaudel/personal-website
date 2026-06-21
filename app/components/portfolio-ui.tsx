@@ -45,44 +45,64 @@ export function PortfolioListItem({
   onMouseLeave: MouseEventHandler<HTMLButtonElement>;
 }) {
   return (
-    <button
-      type="button"
-      className={listItemClass}
-      onClick={onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
-      <div className="flex flex-wrap items-start justify-between gap-1">
-        <div>
-          {item.company ? (
-            <p className="text-[0.68rem] font-semibold tracking-[0.22em]">
-              <span className="uppercase">{item.title}</span>
-              <span className="px-2 text-[0.82rem] text-[var(--text-secondary)]">
-                •
-              </span>
-              <span className="tracking-[0.08em] text-[var(--text-muted)]">
-                {item.company}
-              </span>
-            </p>
-          ) : (
-            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.28em]">
-              {item.title}
-            </p>
-          )}
+    <article className={listItemClass}>
+      <button
+        type="button"
+        className="block w-full text-left"
+        onClick={onClick}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
+        <div className="flex flex-wrap items-start justify-between gap-1">
+          <div>
+            {item.company ? (
+              <p className="text-[0.68rem] font-semibold tracking-[0.22em]">
+                <span className="uppercase">{item.title}</span>
+                <span className="px-2 text-[0.82rem] text-[var(--text-secondary)]">
+                  •
+                </span>
+                <span className="tracking-[0.08em] text-[var(--text-muted)]">
+                  {item.company}
+                </span>
+              </p>
+            ) : (
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.28em]">
+                {item.title}
+              </p>
+            )}
+          </div>
+          {item.period ? (
+            <span className="rounded-full border border-[var(--line-soft)] bg-[var(--badge-bg)] px-3 py-1 text-[0.68rem] font-medium text-[var(--text-muted)]">
+              {item.period}
+            </span>
+          ) : null}
         </div>
-        {item.period ? (
-          <span className="rounded-full border border-[var(--line-soft)] bg-[var(--badge-bg)] px-3 py-1 text-[0.68rem] font-medium text-[var(--text-muted)]">
-            {item.period}
-          </span>
+        {item.summary ? (
+          <p className="mt-0.5 max-w-2xl text-sm leading-7 text-[var(--text-secondary)]">
+            {item.summary}
+          </p>
         ) : null}
-      </div>
-      {item.summary ? (
-        <p className="mt-0.5 max-w-2xl text-sm leading-7 text-[var(--text-secondary)]">
-          {item.summary}
-        </p>
+      </button>
+      {item.externalUrl ? (
+        <a
+          href={item.externalUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-1 inline-flex items-center gap-2 text-sm font-medium text-[var(--text-kicker)] underline decoration-[var(--text-kicker)]/60 underline-offset-4 hover:text-[var(--text-primary)]"
+        >
+          {item.externalLabel ?? `Visit ${item.title}`}
+          <svg
+            viewBox="0 0 20 20"
+            className="h-4 w-4 fill-none stroke-current"
+            strokeWidth="1.8"
+            aria-hidden="true"
+          >
+            <path d="M7 5h8v8M15 5 6 14" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </a>
       ) : null}
       {item.tags?.length ? (
-        <div className="mt-1 flex flex-wrap gap-2">
+        <div className={`${item.externalUrl ? "mt-3" : "mt-1"} flex flex-wrap gap-2`}>
           {item.tags.map((tag) => (
             <span key={tag} className={tagClass}>
               {tag}
@@ -90,6 +110,6 @@ export function PortfolioListItem({
           ))}
         </div>
       ) : null}
-    </button>
+    </article>
   );
 }

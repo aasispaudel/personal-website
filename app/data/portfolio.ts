@@ -15,6 +15,8 @@ export type PortfolioItem = {
   tags?: string[];
   highlights: string[];
   story?: string;
+  externalUrl?: string;
+  externalLabel?: string;
 };
 
 export const identityFields = [
@@ -112,6 +114,8 @@ export const projectItems: PortfolioItem[] = [
     period: "Shipped 2026",
     summary:
       "SettleQ is the project where I learned what becoming a 10x engineer with AI actually means. Building from scratch forced me to think beyond code: product decisions, UX flows, recovery logic, pricing, backend architecture, and design direction — while using AI to move faster without giving up ownership of the final product.",
+    externalUrl: "https://settleq.com",
+    externalLabel: "Visit SettleQ",
     tags: ["Stripe Connect", "Twilio", "Temporal", "FastAPI", "React"],
     highlights: [
       "I shaped SettleQ from idea to product, making core decisions around payment recovery flows, user journeys, pricing boundaries, premium features, and business-facing UX.",
@@ -130,6 +134,8 @@ export const projectItems: PortfolioItem[] = [
     period: "Shipped 2025",
     summary:
       "MailRang is where I started thinking like a product builder, not just a developer. It pushed me beyond writing features into understanding users, positioning, onboarding, deliverability, pricing, product loops, and the difference between software that works and software people actually want to use.",
+    externalUrl: "https://mailrang.com",
+    externalLabel: "Visit MailRang",
     tags: ["Temporal", "AI Replies", "SPF/DKIM/DMARC", "Deliverability", "Campaign Automation"],
     highlights: [
       "I built MailRang as the project that pushed me from developer mode into product-builder mode, where code had to serve positioning, onboarding, trust, and business outcomes.",
@@ -143,13 +149,17 @@ export const projectItems: PortfolioItem[] = [
 
 export const personalProjectItems: PortfolioItem[] = [
   {
-    id: "avatar-portfolio",
+    id: "docklite",
     type: "personal-project",
-    title: "Avatar-driven Portfolio",
-    company: "Interactive personal site",
-    eyebrow: "Personal Projects",
+    title: "DockLite",
+    company: "Docker Desktop alternative for VS Code",
+    eyebrow: "Docker Desktop Lite",
     summary:
-      "A small identity-first portfolio experiment built around a cursor-aware SVG avatar, restrained motion, and a cleaner editorial layout.",
+      "Docklite is a local-first VS Code extension for inspecting and managing Docker containers, images, and volumes without leaving the editor.",
+    externalUrl:
+      "https://marketplace.visualstudio.com/search?term=DockLite&target=VSCode&category=All%20categories&sortBy=Relevance",
+    externalLabel: "View on Marketplace",
+    tags: ["VS Code Extension", "Docker CLI", "Container Management"],
     highlights: [
       "I used the avatar as the main interactive signature instead of leaning on generic particle effects or decorative backgrounds.",
       "I kept the motion subtle: eyes lead, the head follows lightly, and hover states add personality without stealing focus from the content.",
@@ -157,13 +167,16 @@ export const personalProjectItems: PortfolioItem[] = [
     ],
   },
   {
-    id: "garage-ledger",
+    id: "promptcraft",
     type: "personal-project",
-    title: "Garage Ledger",
-    company: "Motorcycle maintenance log",
-    eyebrow: "Personal Projects",
+    title: "PromptCraft",
+    company: "Generate and mock HTTP responses with AI",
+    eyebrow: "Prompt HTTP Responses",
     summary:
-      "A lightweight idea for tracking service history, part changes, ride notes, and ownership details for motorcycles.",
+      "PromptCraft is an in-browser mock API response generator. Users paste a model or data structure, describe the endpoint they need, and get a JSON HTTP response object back.",
+    externalUrl: "https://promptcraft.asispaudel.com",
+    externalLabel: "Visit website",
+    tags: ["API Proxy", "AI", "Transformers.js"],
     highlights: [
       "The interesting part is making practical maintenance data feel easy to revisit instead of turning it into another lifeless spreadsheet.",
       "It connects a real hobby with the kind of product thinking I enjoy: small workflows, useful defaults, and a tactile sense of progress.",
