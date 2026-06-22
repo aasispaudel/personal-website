@@ -33,7 +33,7 @@ export const experienceItems: PortfolioItem[] = [
     title: "Lead Software Engineer, AI Platforms",
     company: "AB InBev",
     eyebrow: "Lead Software Engineer, AI Platforms",
-    period: "Oct 2025 - March 2026",
+    period: "Nov 2024 - March 2026",
     summary:
       "At AB InBev, I built and shipped Insights Copilot, an AI chatbot for enterprise business insights, working across product UI, backend services, RAG workflows, cloud infrastructure, and scalable AI platform tooling.",
     tags: ["RAG", "Azure AKS", "Databricks", "FastAPI", "React"],
@@ -52,7 +52,7 @@ export const experienceItems: PortfolioItem[] = [
     title: "Software Engineer, IoT & Platform Systems",
     company: "Frazil",
     eyebrow: "Software Engineer, IoT & Platform Systems",
-    period: "Jan 2023 - Oct 2025",
+    period: "Sept 2022 - Oct 2024",
     summary:
       "At Fraznet, I built and shipped real-time IoT and platform systems for thousands of vending machines, working across telemetry ingestion, Kafka pipelines, analytics dashboards, Kubernetes infrastructure, and backend services for business and eCommerce operations.",
     tags: ["IoT", "Kafka", "AWS", "FastAPI", "ArgoCD"],
@@ -64,25 +64,6 @@ export const experienceItems: PortfolioItem[] = [
       "I implemented authentication and authorization for a new eCommerce platform used to distribute supplies such as cups and Frazil-related materials."
     ],
     story: "This is the full story for the Software Engineer experience at Frazil."
-  },
-  {
-    id: "full-stack-engineer-ai-scoring",
-    type: "experience",
-    title: "Full-Stack Engineer, PTE Scoring Platform",
-    company: "Scholars' PTE",
-    eyebrow: "Shipping with product and business context",
-    period: "Jul 2022 - Nov 2023",
-    summary:
-      "At Scholars’ PTE, I built and shipped a web-based PTE practice and scoring platform, working across product UI, speech recognition, grammar evaluation, async processing, backend services, authentication, storage, and cost-efficient deployment infrastructure.",
-    tags: ["Next.js", "FastAPI", "Whisper", "Celery", "Supabase"],
-    highlights: [
-      "I designed, built, and published Scholars’ PTE, a web-based practice platform that simulated Pearson PTE-style testing, scoring, and feedback workflows.",
-      "I customized a Whisper-based speech recognition pipeline with targeted datasets, reducing scoring time by around 50% and improving the speed of user feedback.",
-      "I added a two-layer grammar evaluation flow using language tooling and custom checks to improve reliability of written-response assessment.",
-      "I configured Celery for asynchronous task processing, reducing result wait times from roughly five minutes to around 15 seconds.",
-      "I built the application across Next.js, Redux Toolkit, RTK Query, FastAPI, PostgreSQL, Supabase Auth/RLS, Backblaze object storage, and Docker.",
-      "I mentored three junior developers while leading architecture decisions across frontend, backend, database, and deployment workflows."
-    ],
   },
     {
     id: "full-stack-engineer-care-operations-platform",
@@ -123,6 +104,24 @@ export const projectItems: PortfolioItem[] = [
       "I integrated Stripe Connect to support connected accounts, payment tracking, and recovery workflows tied to real invoice and payment status.",
       "I used Temporal to model durable invoice recovery workflows, so each invoice could move through timed recovery stages reliably without fragile cron logic.",
       "I built the product across React, FastAPI, PostgreSQL, Twilio, Resend, workflow orchestration, and recovery analytics."
+    ],
+  },
+    {
+    id: "full-stack-engineer-ai-scoring",
+    type: "experience",
+    title: "Scholars' PTE",
+    company: "Pearson's PTE Practice & Scoring Platform",
+    eyebrow: "Shipping with product and business context",
+    period: "Jul 2022 - Nov 2023",
+    summary: "Scholars’ PTE is where I started thinking like a product builder, not just a developer. With three junior developers working alongside me, I had to move beyond writing code into shaping the product, guiding technical decisions, mentoring the team, and thinking deeply about scoring accuracy, feedback speed, learner trust, and the difference between an impressive AI demo and a dependable learning experience.",
+    tags: ["Next.js", "FastAPI", "Automatic Speech Recognition", "Celery", "Supabase"],
+    highlights: [
+      "I designed, built, and published Scholars’ PTE, a web-based practice platform that simulated Pearson PTE-style testing, scoring, and feedback workflows.",
+      "I customized a Whisper-based speech recognition pipeline with targeted datasets, reducing scoring time by around 50% and improving the speed of user feedback.",
+      "I added a two-layer grammar evaluation flow using language tooling and custom checks to improve reliability of written-response assessment.",
+      "I configured Celery for asynchronous task processing, reducing result wait times from roughly five minutes to around 15 seconds.",
+      "I built the application across Next.js, Redux Toolkit, RTK Query, FastAPI, PostgreSQL, Supabase Auth/RLS, Backblaze object storage, and Docker.",
+      "I mentored three junior developers while leading architecture decisions across frontend, backend, database, and deployment workflows."
     ],
   },
   {
