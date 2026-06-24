@@ -205,8 +205,8 @@ export default function Home() {
       oscillator.stop(now + delay + 0.14);
     };
 
-    tap(0, 320, 0.018);
-    tap(0.06, 240, 0.015);
+    tap(0, 320, 0.0207);
+    tap(0.06, 240, 0.01725);
   });
 
   const handleInteractiveHover = (vector: FocusVector): MouseEventHandler<HTMLElement> => {
