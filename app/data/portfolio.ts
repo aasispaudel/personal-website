@@ -166,14 +166,14 @@ export const personalProjectItems: PortfolioItem[] = [
     ],
   },
   {
-    id: "promptcraft",
+    id: "mocklane",
     type: "personal-project",
-    title: "PromptCraft",
+    title: "MockLane",
     company: "Generate and mock HTTP responses with AI",
     eyebrow: "Prompt HTTP Responses",
     summary:
-      "PromptCraft is an in-browser mock API response generator. Users paste a model or data structure, describe the endpoint they need, and get a JSON HTTP response object back.",
-    externalUrl: "https://promptcraft.asispaudel.com",
+      "MockLane is an in-browser mock API response generator. Users paste a model or data structure, describe the endpoint they need, and get a JSON HTTP response object back.",
+    externalUrl: "https://mocklane.asispaudel.com",
     externalLabel: "Visit website",
     tags: ["API Proxy", "AI", "Transformers.js"],
     highlights: [
