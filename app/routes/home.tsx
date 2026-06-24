@@ -5,6 +5,7 @@ import {
   useRef,
   useState,
   type MouseEventHandler,
+  type WheelEventHandler,
 } from "react";
 import { Link } from "react-router";
 
@@ -61,6 +62,7 @@ export default function Home() {
   const scrollInfluence = useRef(0);
   const audioContextRef = useRef<AudioContext | null>(null);
   const contactCopyTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const contentScrollRef = useRef<HTMLDivElement | null>(null);
   const allItems = useMemo(
     () => [...experienceItems, ...projectItems, ...personalProjectItems, ...articleItems],
     [],
@@ -241,22 +243,85 @@ export default function Home() {
     contactCopyTimeout.current = setTimeout(() => setIsContactEmailCopied(false), 1800);
   };
 
+  const handleSectionNavigation = (
+    sectionId: string,
+  ): MouseEventHandler<HTMLAnchorElement> => {
+    return (event) => {
+      const target = document.getElementById(sectionId);
+      if (!target) return;
+
+      event.preventDefault();
+      window.history.pushState(null, "", `#${sectionId}`);
+
+      const contentScroller = contentScrollRef.current;
+      if (contentScroller && window.matchMedia("(min-width: 64rem)").matches) {
+        const scrollerBounds = contentScroller.getBoundingClientRect();
+        const targetBounds = target.getBoundingClientRect();
+        const targetTop = contentScroller.scrollTop + targetBounds.top - scrollerBounds.top;
+
+        window.scrollTo(0, 0);
+        contentScroller.scrollTo({ top: targetTop, behavior: "smooth" });
+        return;
+      }
+
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+  };
+
+  const handleDesktopPageWheel: WheelEventHandler<HTMLElement> = (event) => {
+    const contentScroller = contentScrollRef.current;
+    if (!contentScroller || !window.matchMedia("(min-width: 64rem)").matches) {
+      return;
+    }
+
+    if (window.scrollY !== 0) window.scrollTo(0, 0);
+    if (contentScroller.contains(event.target as Node)) return;
+
+    const deltaMultiplier =
+      event.deltaMode === WheelEvent.DOM_DELTA_LINE
+        ? 16
+        : event.deltaMode === WheelEvent.DOM_DELTA_PAGE
+          ? contentScroller.clientHeight
+          : 1;
+
+    contentScroller.scrollTop += event.deltaY * deltaMultiplier;
+  };
+
   return (
-    <main className="min-h-screen bg-[var(--page-bg)] text-[var(--text-primary)] lg:h-screen lg:overflow-hidden">
+    <main
+      className="min-h-screen bg-[var(--page-bg)] text-[var(--text-primary)] lg:h-screen lg:overflow-hidden"
+      onWheel={handleDesktopPageWheel}
+    >
       <header className="relative z-20 w-full max-w-[1532px] px-4 pb-4 pt-5 sm:px-6">
         <div className="grid items-center gap-6 sm:gap-10 md:gap-14 lg:grid-cols-[minmax(350px,400px)_minmax(0,1fr)] lg:gap-0">
           <nav className="flex flex-wrap items-center justify-between lg:col-start-2 lg:pl-18">
             <div className="flex justify-start gap-6">
-              <a className={navLinkClass} href="#experience">
+              <a
+                className={navLinkClass}
+                href="#experience"
+                onClick={handleSectionNavigation("experience")}
+              >
                 Experience
               </a>
-              <a className={navLinkClass} href="#projects">
+              <a
+                className={navLinkClass}
+                href="#projects"
+                onClick={handleSectionNavigation("projects")}
+              >
                 Projects
               </a>
-              <a className={navLinkClass} href="#personal-projects">
+              <a
+                className={navLinkClass}
+                href="#personal-projects"
+                onClick={handleSectionNavigation("personal-projects")}
+              >
                 Personal
               </a>
-              <a className={navLinkClass} href="#contact">
+              <a
+                className={navLinkClass}
+                href="#contact"
+                onClick={handleSectionNavigation("contact")}
+              >
                 Contact
               </a>
             </div>
@@ -308,7 +373,10 @@ export default function Home() {
           </div>
           <Bio />
         </aside>
-        <div className="content-scrollbar space-y-8 sm:space-y-10 lg:h-full lg:overflow-y-auto lg:overscroll-contain lg:pb-14 lg:pl-18 lg:pr-3">
+        <div
+          ref={contentScrollRef}
+          className="content-scrollbar space-y-8 sm:space-y-10 lg:h-full lg:overflow-y-auto lg:overscroll-contain lg:pb-14 lg:pl-18 lg:pr-3"
+        >
           <ExperienceSection
             items={experienceItems}
             onSelectItem={setSelectedItem}
