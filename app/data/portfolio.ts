@@ -173,8 +173,8 @@ export const personalProjectItems: PortfolioItem[] = [
     eyebrow: "Prompt HTTP Responses",
     summary:
       "MockLane is an in-browser mock API response generator. Users paste a model or data structure, describe the endpoint they need, and get a JSON HTTP response object back.",
-    externalUrl: "https://mocklane.asispaudel.com",
-    externalLabel: "Visit website",
+    externalUrl: "https://www.npmjs.com/package/@mocklane/core",
+    externalLabel: "Visit on npm",
     tags: ["API Proxy", "AI", "Transformers.js"],
     highlights: [
       "The interesting part is making practical maintenance data feel easy to revisit instead of turning it into another lifeless spreadsheet.",
