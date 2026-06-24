@@ -1,4 +1,5 @@
 import { useRef, useState, type ReactNode } from "react";
+import { InteractiveRadialBurst } from "~/components/interactive-radial-burst";
 
 type ProfileItemProps = {
   icon: ReactNode;
@@ -209,6 +210,8 @@ const Bio = () => {
           </div>
         ))}
       </nav>
+
+      <InteractiveRadialBurst />
     </section>
   );
 };
