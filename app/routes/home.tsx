@@ -340,12 +340,11 @@ export default function Home() {
             <div className="mt-3 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div className="max-w-2xl">
                 <h2 className="text-2xl font-semibold sm:text-3xl">
-                  If you have an idea to ship or a product to enhanc, we should talk.
+                  If you have an idea to ship or a product to enhance, we should talk.
                 </h2>
                 <p className="mt-3 text-sm leading-7 text-[var(--text-secondary)]">
-                  This fresh starter is structured so we can now replace every bit
-                  of placeholder content with your real story without touching the
-                  main interaction system.
+                  I’m drawn to building thoughtful products and architecting systems that stay reliable as they scale.
+                  Tell me what you’re working on, where the complexity lies, and what a great outcome looks like.
                 </p>
               </div>
               <div className="group relative self-start md:self-auto">
