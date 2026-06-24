@@ -1,4 +1,4 @@
-import type { MouseEventHandler } from "react";
+import { useState, type MouseEventHandler } from "react";
 
 import type { PortfolioItem } from "~/data/portfolio";
 
@@ -15,12 +15,15 @@ export function PersonalProjectsSection({
   onHover: MouseEventHandler<HTMLElement>;
   onLeave: MouseEventHandler<HTMLElement>;
 }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const visibleItems = isExpanded ? items : items.slice(0, 2);
+
   return (
     <section id="personal-projects" className="px-1 sm:px-2">
       <SectionHeader kicker="Personal Projects" />
 
       <div className="mt-3 grid gap-2 border-l border-[var(--line-soft)] pl-4">
-        {items.map((item) => {
+        {visibleItems.map((item) => {
           const cardContent = (
             <>
               <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-2">
@@ -107,6 +110,18 @@ export function PersonalProjectsSection({
           );
         })}
       </div>
+
+      {items.length > 2 ? (
+        <div className="mb-2 mt-1 flex justify-start">
+          <button
+            type="button"
+            className="cursor-pointer text-sm font-medium text-[var(--text-kicker)] transition-opacity hover:opacity-75"
+            onClick={() => setIsExpanded((current) => !current)}
+          >
+            {isExpanded ? "See less" : `See more (${items.length - 2})`}
+          </button>
+        </div>
+      ) : null}
     </section>
   );
 }
