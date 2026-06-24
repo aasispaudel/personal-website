@@ -156,7 +156,7 @@ export const personalProjectItems: PortfolioItem[] = [
     summary:
       "Docklite is a local-first VS Code extension for inspecting and managing Docker containers, images, and volumes without leaving the editor.",
     externalUrl:
-      "https://marketplace.visualstudio.com/search?term=DockLite&target=VSCode&category=All%20categories&sortBy=Relevance",
+      "https://marketplace.visualstudio.com/items?itemName=asis-paudel.docklite",
     externalLabel: "View on Marketplace",
     tags: ["VS Code Extension", "Docker CLI", "Container Management"],
     highlights: [

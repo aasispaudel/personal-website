@@ -103,7 +103,7 @@ const Bio = () => {
   };
 
   const socialButtonClass =
-    "grid h-11 w-11 place-items-center rounded-full border border-[var(--line-strong)] text-[var(--text-secondary)] hover:-translate-y-1 hover:border-[var(--brand)] hover:text-[var(--brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--brand)]";
+    "grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-[var(--line-strong)] text-[var(--text-secondary)] hover:-translate-y-1 hover:border-[var(--brand)] hover:text-[var(--brand)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--brand)]";
 
   return (
     <section className="mx-auto mt-3 w-full max-w-[22rem]" aria-labelledby="profile-name">
@@ -167,7 +167,10 @@ const Bio = () => {
 
       <nav className="flex items-center justify-between gap-3" aria-label="Social links">
         {socialLinks.map((link) => (
-          <div key={link.label} className="relative">
+          <div
+            key={link.label}
+            className={`relative ${link.copyValue ? "group" : ""}`}
+          >
             {link.href ? (
               <a
                 href={link.href}
@@ -182,18 +185,25 @@ const Bio = () => {
               <button
                 type="button"
                 aria-label={`Copy ${link.label.toLowerCase()}`}
+                aria-describedby={`${link.label.toLowerCase()}-copy-tooltip`}
                 className={socialButtonClass}
                 onClick={() => void copyContact(link)}
               >
                 {link.icon}
               </button>
             )}
-            {copiedLabel === link.label ? (
+            {link.copyValue ? (
               <span
+                id={`${link.label.toLowerCase()}-copy-tooltip`}
                 role="status"
-                className="absolute bottom-[calc(100%+0.7rem)] left-1/2 z-20 w-max -translate-x-1/2 rounded-lg bg-[var(--text-primary)] px-2.5 py-1.5 text-[0.7rem] font-semibold text-[var(--page-bg)] shadow-[var(--shadow-card)] after:absolute after:left-1/2 after:top-full after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-[var(--text-primary)]"
+                aria-live="polite"
+                className={`pointer-events-none absolute bottom-[calc(100%+0.7rem)] left-1/2 z-20 w-max -translate-x-1/2 rounded-lg bg-[var(--text-primary)] px-2.5 py-1.5 text-[0.7rem] font-semibold text-[var(--page-bg)] shadow-[var(--shadow-card)] transition-opacity after:absolute after:left-1/2 after:top-full after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-[var(--text-primary)] ${
+                  copiedLabel === link.label
+                    ? "opacity-100"
+                    : "opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
+                }`}
               >
-                {link.copiedMessage}
+                {copiedLabel === link.label ? link.copiedMessage : "Copy"}
               </span>
             ) : null}
           </div>

@@ -12,27 +12,18 @@ export function PersonalProjectsSection({
 }: {
   items: PortfolioItem[];
   onSelectItem: (item: PortfolioItem) => void;
-  onHover: MouseEventHandler<HTMLButtonElement>;
-  onLeave: MouseEventHandler<HTMLButtonElement>;
+  onHover: MouseEventHandler<HTMLElement>;
+  onLeave: MouseEventHandler<HTMLElement>;
 }) {
   return (
     <section id="personal-projects" className="px-1 sm:px-2">
       <SectionHeader kicker="Personal Projects" />
 
       <div className="mt-3 grid gap-2 border-l border-[var(--line-soft)] pl-4">
-        {items.map((item) => (
-          <article
-            key={item.id}
-            className="group w-full rounded-2xl border border-[var(--line-soft)] bg-[var(--card-sheen)] px-4 py-4 text-left shadow-[var(--shadow-card)] transition hover:border-[var(--line-strong)] sm:px-5"
-          >
-            <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-2">
-              <button
-                type="button"
-                className="text-left"
-                onClick={() => onSelectItem(item)}
-                onMouseEnter={onHover}
-                onMouseLeave={onLeave}
-              >
+        {items.map((item) => {
+          const cardContent = (
+            <>
+              <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-2">
                 <p className="text-[0.68rem] font-semibold tracking-[0.18em]">
                   <span className="uppercase text-[var(--text-primary)]">
                     {item.title}
@@ -48,50 +39,73 @@ export function PersonalProjectsSection({
                     </>
                   ) : null}
                 </p>
-              </button>
-              {item.externalUrl ? (
-                <a
-                  href={item.externalUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--text-kicker)] hover:-translate-y-px hover:text-[var(--text-primary)]"
-                >
-                  {item.externalLabel ?? "View project"}
-                  <svg
-                    viewBox="0 0 20 20"
-                    className="h-4 w-4 fill-none stroke-current"
-                    strokeWidth="1.8"
+
+                {item.externalUrl ? (
+                  <span
+                    className="inline-flex items-center gap-2 text-xs font-semibold text-[var(--text-kicker)] transition group-hover:-translate-y-px group-hover:text-[var(--text-primary)]"
                     aria-hidden="true"
                   >
-                    <path d="M7 5h8v8M15 5 6 14" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </a>
-              ) : null}
-            </div>
-            <button
-              type="button"
-              className="block w-full text-left"
-              onClick={() => onSelectItem(item)}
-              onMouseEnter={onHover}
-              onMouseLeave={onLeave}
-            >
+                    {item.externalLabel ?? "View project"}
+                    <svg
+                      viewBox="0 0 20 20"
+                      className="h-4 w-4 fill-none stroke-current transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      strokeWidth="1.8"
+                      aria-hidden="true"
+                    >
+                      <path d="M7 5h8v8M15 5 6 14" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                ) : null}
+              </div>
+
               {item.summary ? (
                 <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--text-secondary)]">
                   {item.summary}
                 </p>
               ) : null}
-            </button>
-            {item.tags?.length ? (
-              <div className="mt-3 flex flex-wrap gap-2">
-                {item.tags.map((tag) => (
-                  <span key={tag} className={tagClass}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            ) : null}
-          </article>
-        ))}
+
+              {item.tags?.length ? (
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {item.tags.map((tag) => (
+                    <span key={tag} className={tagClass}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+            </>
+          );
+
+          return (
+            <article
+              key={item.id}
+              className="group w-full rounded-2xl border border-[var(--line-soft)] bg-[var(--card-sheen)] text-left shadow-[var(--shadow-card)] transition hover:border-[var(--line-strong)] sm:px-0"
+            >
+              {item.externalUrl ? (
+                <a
+                  href={item.externalUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block cursor-pointer px-4 py-4 sm:px-5"
+                  onMouseEnter={onHover}
+                  onMouseLeave={onLeave}
+                >
+                  {cardContent}
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  className="block w-full cursor-pointer px-4 py-4 text-left sm:px-5"
+                  onClick={() => onSelectItem(item)}
+                  onMouseEnter={onHover}
+                  onMouseLeave={onLeave}
+                >
+                  {cardContent}
+                </button>
+              )}
+            </article>
+          );
+        })}
       </div>
     </section>
   );

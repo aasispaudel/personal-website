@@ -38,7 +38,7 @@ export function ExperienceSection({
         <div className="mt-1 mb-2 flex justify-start">
           <button
             type="button"
-            className="text-sm font-medium text-[var(--text-kicker)] transition-opacity hover:opacity-75"
+            className="cursor-pointer text-sm font-medium text-[var(--text-kicker)] transition-opacity hover:opacity-75"
             onClick={() => setIsExpanded((current) => !current)}
           >
             {isExpanded ? "See less" : `See more (${items.length - 2})`}

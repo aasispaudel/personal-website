@@ -30,6 +30,7 @@ import Bio from "~/components/bio";
 
 type Theme = "light" | "dark";
 type FocusVector = { x: number; y: number };
+const contactEmail = "aasispaudelthp2@gmail.com";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -47,6 +48,7 @@ export default function Home() {
   const [soundOn, setSoundOn] = useState(true);
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
   const [isAvatarHappy, setIsAvatarHappy] = useState(false);
+  const [isContactEmailCopied, setIsContactEmailCopied] = useState(false);
   const [focus, setFocus] = useState<FocusVector>({ x: 0, y: 0 });
   const [motion, setMotion] = useState({
     eyeX: 0,
@@ -58,6 +60,7 @@ export default function Home() {
   const pointerTarget = useRef<FocusVector>({ x: 0, y: 0 });
   const scrollInfluence = useRef(0);
   const audioContextRef = useRef<AudioContext | null>(null);
+  const contactCopyTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const allItems = useMemo(
     () => [...experienceItems, ...projectItems, ...personalProjectItems, ...articleItems],
     [],
@@ -157,6 +160,14 @@ export default function Home() {
     };
   }, [selectedItem]);
 
+  useEffect(() => {
+    return () => {
+      if (contactCopyTimeout.current) {
+        clearTimeout(contactCopyTimeout.current);
+      }
+    };
+  }, []);
+
   const playHoverSound = useEffectEvent(() => {
     if (!soundOn) {
       return;
@@ -207,6 +218,27 @@ export default function Home() {
   const handleInteractiveLeave: MouseEventHandler<HTMLElement> = () => {
     setFocus({ x: 0, y: 0 });
     setIsAvatarHappy(false);
+  };
+
+  const copyContactEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(contactEmail);
+    } catch {
+      const textarea = document.createElement("textarea");
+      textarea.value = contactEmail;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      textarea.remove();
+    }
+
+    setIsContactEmailCopied(true);
+    if (contactCopyTimeout.current) {
+      clearTimeout(contactCopyTimeout.current);
+    }
+    contactCopyTimeout.current = setTimeout(() => setIsContactEmailCopied(false), 1800);
   };
 
   return (
@@ -276,7 +308,7 @@ export default function Home() {
           </div>
           <Bio />
         </aside>
-        <div className="content-scrollbar space-y-5 lg:h-full lg:overflow-y-auto lg:overscroll-contain lg:pb-14 lg:pl-18 lg:pr-3">
+        <div className="content-scrollbar space-y-8 sm:space-y-10 lg:h-full lg:overflow-y-auto lg:overscroll-contain lg:pb-14 lg:pl-18 lg:pr-3">
           <ExperienceSection
             items={experienceItems}
             onSelectItem={setSelectedItem}
@@ -308,8 +340,7 @@ export default function Home() {
             <div className="mt-3 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div className="max-w-2xl">
                 <h2 className="text-2xl font-semibold sm:text-3xl">
-                  If the work needs to feel polished and technically grounded, we
-                  should talk.
+                  If you have an idea to ship or a product to enhanc, we should talk.
                 </h2>
                 <p className="mt-3 text-sm leading-7 text-[var(--text-secondary)]">
                   This fresh starter is structured so we can now replace every bit
@@ -317,9 +348,31 @@ export default function Home() {
                   main interaction system.
                 </p>
               </div>
-              <a className={`${menuPillClass} self-start md:self-auto`} href="mailto:asis@example.com">
-                asis@example.com
-              </a>
+              <div className="group relative self-start md:self-auto">
+                <button
+                  type="button"
+                  aria-label="Copy email address"
+                  aria-describedby="contact-email-tooltip"
+                  className={menuPillClass}
+                  onClick={() => void copyContactEmail()}
+                  onMouseEnter={handleInteractiveHover({ x: 0.35, y: 0.15 })}
+                  onMouseLeave={handleInteractiveLeave}
+                >
+                  {contactEmail}
+                </button>
+                <span
+                  id="contact-email-tooltip"
+                  role="status"
+                  aria-live="polite"
+                  className={`pointer-events-none absolute bottom-[calc(100%+0.7rem)] left-1/2 z-20 w-max -translate-x-1/2 rounded-lg bg-[var(--text-primary)] px-2.5 py-1.5 text-center text-[0.7rem] font-semibold normal-case tracking-normal text-[var(--page-bg)] shadow-[var(--shadow-card)] transition-opacity after:absolute after:left-1/2 after:top-full after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-[var(--text-primary)] ${
+                    isContactEmailCopied
+                      ? "opacity-100"
+                      : "opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
+                  }`}
+                >
+                  {isContactEmailCopied ? "Email copied!" : "Copy"}
+                </span>
+              </div>
             </div>
           </section>
         </div>
