@@ -17,6 +17,13 @@ export type PortfolioItem = {
   story?: string;
   externalUrl?: string;
   externalLabel?: string;
+  snapshot?: {
+    role: string;
+    team: string;
+    scope: string[];
+    languages: string[];
+    technology: string[];
+  };
 };
 
 export const identityFields = [
@@ -37,6 +44,13 @@ export const experienceItems: PortfolioItem[] = [
     summary:
       "At AB InBev, I built and shipped Insights Copilot, an AI chatbot for enterprise business insights, working across product UI, backend services, RAG workflows, cloud infrastructure, and scalable AI platform tooling.",
     tags: ["RAG", "Azure AKS", "Databricks", "FastAPI", "React"],
+    snapshot: {
+      role: "Lead Software Engineer",
+      team: "AI platform + DevOps collaboration",
+      scope: ["AI platform", "full-stack", "RAG", "architecture", "scaling"],
+      languages: ["Python", "TypeScript", "SQL"],
+      technology: ["Azure AKS", "Databricks", "FastAPI", "React", "PostgreSQL", "Redis", "KEDA", "Plotly"],
+    },
     highlights: [
       "I designed and shipped core features for Insights Copilot across FastAPI, React/Next.js, PostgreSQL, RAG, and agentic workflows.",
       "I built application architecture that connected product UI, backend services, and enterprise data retrieval into a reliable internal AI platform.",
@@ -56,6 +70,13 @@ export const experienceItems: PortfolioItem[] = [
     summary:
       "At Fraznet, I built and shipped real-time IoT and platform systems for thousands of vending machines, working across telemetry ingestion, Kafka pipelines, analytics dashboards, Kubernetes infrastructure, and backend services for business and eCommerce operations.",
     tags: ["IoT", "Kafka", "AWS", "FastAPI", "ArgoCD"],
+    snapshot: {
+      role: "Software Engineer",
+      team: "Platform, data, and DevOps teams",
+      scope: ["IoT platform", "backend", "data pipelines", "dashboards", "cloud infrastructure"],
+      languages: ["Python", "TypeScript", "SQL"],
+      technology: ["AWS", "Kafka", "Kubernetes", "ArgoCD", "FastAPI", "PostgreSQL"],
+    },
     highlights: [
       "I built and maintained a real-time data platform ingesting sales and machine-health telemetry from thousands of vending machines across US and Canada, with events sent every five seconds per machine.",
       "I introduced Apache Kafka to handle high-throughput ingestion of 100,000+ events per minute, improving scalability and reducing peak-load latency.",
@@ -75,6 +96,13 @@ export const experienceItems: PortfolioItem[] = [
     summary:
       "At KPS Software, I built and improved care operations software for workforce scheduling, caregiver matching, and service planning, working across Angular frontends, Python optimization workflows, insurance logic, automated testing, and maintainable full-stack healthcare systems.",
     tags: ["Angular", "Python", "OR-Tools", "Healthcare", "Optimization"],
+    snapshot: {
+      role: "Full-Stack Engineer",
+      team: "Product + engineering team",
+      scope: ["full-stack", "optimization", "healthcare workflows", "testing"],
+      languages: ["TypeScript", "Java"],
+      technology: ["Angular", "OR-Tools", "Karate", "Jasmine", "Karma"],
+    },
     highlights: [
       "I built workforce optimization features using Python and OR-Tools, improving caregiver shift planning, matching, and scheduling reliability.",
       "I implemented constraint-based matching logic that considered working hours, location, traffic conditions, and caregiver preferences.",
@@ -98,6 +126,13 @@ export const projectItems: PortfolioItem[] = [
     externalUrl: "https://settleq.com",
     externalLabel: "Visit SettleQ",
     tags: ["Stripe Connect", "Twilio", "Temporal", "FastAPI", "React"],
+    snapshot: {
+      role: "Product Builder / Full-Stack Engineer",
+      team: "Solo build",
+      scope: ["product strategy", "UX", "backend architecture", "payments", "automation"],
+      languages: ["TypeScript", "Python", "SQL"],
+      technology: ["Stripe Connect", "Twilio", "Temporal", "FastAPI", "React", "PostgreSQL", "Resend"],
+    },
     highlights: [
       "I shaped SettleQ from idea to product, making core decisions around payment recovery flows, user journeys, pricing boundaries, premium features, and business-facing UX.",
       "I designed the recovery experience across gentle, urgent, and final stages, balancing automation with a tone that felt calm, professional, and trustworthy for overdue invoice follow-ups.",
@@ -115,6 +150,13 @@ export const projectItems: PortfolioItem[] = [
     period: "Jul 2022 - Nov 2023",
     summary: "Scholars’ PTE is where I started thinking like a product builder, not just a developer. With three junior developers working alongside me, I had to move beyond writing code into shaping the product, guiding technical decisions, mentoring the team, and thinking deeply about scoring accuracy, feedback speed, learner trust, and the difference between an impressive AI demo and a dependable learning experience.",
     tags: ["Next.js", "FastAPI", "Automatic Speech Recognition", "Celery", "Supabase"],
+    snapshot: {
+      role: "Full-Stack Engineer / Technical Lead",
+      team: "4 people",
+      scope: ["product leadership", "full-stack", "AI scoring", "mentoring", "architecture"],
+      languages: ["TypeScript", "Python", "SQL"],
+      technology: ["Next.js", "FastAPI", "Whisper", "Celery", "Supabase", "PostgreSQL", "Docker"],
+    },
     highlights: [
       "I designed, built, and published Scholars’ PTE, a web-based practice platform that simulated Pearson PTE-style testing, scoring, and feedback workflows.",
       "I customized a Whisper-based speech recognition pipeline with targeted datasets, reducing scoring time by around 50% and improving the speed of user feedback.",
@@ -136,6 +178,13 @@ export const projectItems: PortfolioItem[] = [
     externalUrl: "https://mailrang.com",
     externalLabel: "Visit MailRang",
     tags: ["Temporal", "AI Replies", "SPF/DKIM/DMARC", "Deliverability", "Campaign Automation"],
+    snapshot: {
+      role: "Product Builder / Full-Stack Engineer",
+      team: "Solo build",
+      scope: ["product strategy", "backend architecture", "deliverability", "automation", "AI replies"],
+      languages: ["TypeScript", "Python", "SQL"],
+      technology: ["Temporal", "FastAPI", "React", "PostgreSQL", "SPF/DKIM/DMARC", "DNS"],
+    },
     highlights: [
       "I built MailRang as the project that pushed me from developer mode into product-builder mode, where code had to serve positioning, onboarding, trust, and business outcomes.",
       "I used Temporal to orchestrate cold email campaign flows, including timed sends, follow-ups, pauses, reply detection, and safe exits from automation.",
@@ -159,6 +208,13 @@ export const personalProjectItems: PortfolioItem[] = [
       "https://marketplace.visualstudio.com/items?itemName=asis-paudel.docklite",
     externalLabel: "View on Marketplace",
     tags: ["VS Code Extension", "Docker CLI", "Container Management"],
+    snapshot: {
+      role: "Extension Builder",
+      team: "Solo build",
+      scope: ["developer tooling", "UX", "container workflows", "local-first tooling"],
+      languages: ["TypeScript"],
+      technology: ["VS Code Extension API", "Docker CLI", "Node.js"],
+    },
     highlights: [
       "I used the avatar as the main interactive signature instead of leaning on generic particle effects or decorative backgrounds.",
       "I kept the motion subtle: eyes lead, the head follows lightly, and hover states add personality without stealing focus from the content.",
@@ -176,6 +232,13 @@ export const personalProjectItems: PortfolioItem[] = [
     externalUrl: "https://www.npmjs.com/package/@mocklane/core",
     externalLabel: "Visit on npm",
     tags: ["API Proxy", "AI", "Transformers.js"],
+    snapshot: {
+      role: "Product Builder",
+      team: "Solo build",
+      scope: ["API tooling", "mock responses", "AI-assisted generation", "developer UX"],
+      languages: ["TypeScript"],
+      technology: ["Transformers.js", "Node.js", "npm", "HTTP APIs"],
+    },
     highlights: [
       "The interesting part is making practical maintenance data feel easy to revisit instead of turning it into another lifeless spreadsheet.",
       "It connects a real hobby with the kind of product thinking I enjoy: small workflows, useful defaults, and a tactile sense of progress.",

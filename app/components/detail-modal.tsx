@@ -11,6 +11,22 @@ export function DetailModal({
   onClose: () => void;
   relatedCount: number;
 }) {
+  const snapshot = item.snapshot ?? {
+    role: item.eyebrow,
+    team: `${relatedCount} related items`,
+    scope: item.tags ?? [item.type],
+    languages: ["—"],
+    technology: item.tags ?? ["—"],
+  };
+
+  const snapshotRows = [
+    ["Role", snapshot.role],
+    ["Team", snapshot.team],
+    ["Scope", snapshot.scope.join(", ")],
+    ["Languages", snapshot.languages.join(", ")],
+    ["Technology", snapshot.technology.join(", ")],
+  ];
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--overlay)] p-4 backdrop-blur-lg sm:p-6">
       <button
@@ -78,30 +94,16 @@ export function DetailModal({
               Snapshot
             </p>
             <dl className="mt-4 space-y-4 text-sm text-[var(--text-secondary)]">
-              <div>
-                <dt className="text-[0.72rem] uppercase tracking-[0.24em] text-[var(--text-muted)]">
-                  Category
-                </dt>
-                <dd className="mt-1 font-medium text-[var(--text-primary)]">
-                  {item.type}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-[0.72rem] uppercase tracking-[0.24em] text-[var(--text-muted)]">
-                  Eyebrow
-                </dt>
-                <dd className="mt-1 font-medium text-[var(--text-primary)]">
-                  {item.eyebrow}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-[0.72rem] uppercase tracking-[0.24em] text-[var(--text-muted)]">
-                  Scope
-                </dt>
-                <dd className="mt-1 font-medium text-[var(--text-primary)]">
-                  {relatedCount} sample items in this starter
-                </dd>
-              </div>
+              {snapshotRows.map(([label, value]) => (
+                <div key={label}>
+                  <dt className="text-[0.72rem] uppercase tracking-[0.24em] text-[var(--text-muted)]">
+                    {label}
+                  </dt>
+                  <dd className="mt-1 font-medium leading-6 text-[var(--text-primary)]">
+                    {value}
+                  </dd>
+                </div>
+              ))}
             </dl>
           </aside>
         </div>
