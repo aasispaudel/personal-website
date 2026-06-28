@@ -35,7 +35,7 @@ const contactEmail = "aasispaudelthp2@gmail.com";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Asis Paudel | Personal Website" },
+    { title: "Asis Paudel" },
     {
       name: "description",
       content:
