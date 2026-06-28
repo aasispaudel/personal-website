@@ -35,7 +35,7 @@ export function DetailModal({
         className="absolute inset-0 cursor-default"
         onClick={onClose}
       />
-      <div className="relative flex h-[min(80vh,860px)] w-[min(80vw,1100px)] flex-col overflow-hidden rounded-[2.2rem] border border-[var(--line-strong)] bg-[var(--modal-bg)] shadow-[var(--shadow-modal)]">
+      <div className="relative flex max-h-[min(80vh,760px)] w-[min(80vw,1100px)] flex-col overflow-hidden rounded-[2.2rem] border border-[var(--line-strong)] bg-[var(--modal-bg)] shadow-[var(--shadow-modal)]">
         <div className="flex items-start justify-between gap-4 border-b border-[var(--line-soft)] px-5 py-5 sm:px-7">
           <div className="max-w-3xl">
             <p className="text-[0.72rem] font-semibold uppercase tracking-[0.3em] text-[var(--text-kicker)]">
@@ -65,7 +65,7 @@ export function DetailModal({
                 ))}
               </div>
             ) : null}
-            <div className="mt-6 space-y-4">
+            <div className="mt-6">
               <ul className="max-w-3xl space-y-2">
                 {item.highlights.map((highlight) => (
                   <li
@@ -76,16 +76,6 @@ export function DetailModal({
                   </li>
                 ))}
               </ul>
-              <div className="rounded-[1.6rem] border border-[var(--line-soft)] bg-[var(--card-sheen)] p-5 pt-6">
-                <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-[var(--text-kicker)]">
-                  Case Study
-                </p>
-                <p className="mt-3 text-sm leading-7 text-[var(--text-secondary)]">
-                  This area is ready for long-form case studies, visual references,
-                  architecture notes, metrics, and all the richer material that
-                  would clutter the main page if shown inline.
-                </p>
-              </div>
             </div>
           </div>
 
