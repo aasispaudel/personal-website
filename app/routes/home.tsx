@@ -328,8 +328,8 @@ export default function Home() {
             <div className="flex justify-start gap-6">
               <a
                 className={menuPillClass}
-                href="/asis-paudel-resume.txt"
-                download
+                href="/AsisPaudelResume.pdf"
+                download="AsisPaudelResume.pdf"
                 onMouseEnter={handleInteractiveHover({ x: 0.35, y: -0.1 })}
                 onMouseLeave={handleInteractiveLeave}
               >
